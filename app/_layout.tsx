@@ -68,8 +68,8 @@ export default function RootLayout() {
     <>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="signin" options={{ presentation: 'modal' }} />
-        <Stack.Screen name="signup" options={{ presentation: 'modal' }} />
+        <Stack.Screen name="register" options={{ presentation: 'modal' }} />
+        <Stack.Screen name="login" options={{ presentation: 'modal' }} />
       </Stack>
       {/* Configuración global del Toast con customToastConfig */}
       <Toast config={customToastConfig} />

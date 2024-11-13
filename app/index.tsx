@@ -1,7 +1,7 @@
 import { ImageBackground, Text, TextInput, View, TouchableOpacity, KeyboardAvoidingView, Platform, ScrollView, Keyboard, Image } from "react-native";
 import React, { useState, useEffect } from "react";
 import { Link, router, Stack } from "expo-router";
-import { AntDesign, Ionicons } from "@expo/vector-icons";  // Importamos los iconos
+import { AntDesign, Entypo, FontAwesome5, Ionicons } from "@expo/vector-icons";  // Importamos los iconos
 import Cdd from '@/assets/images/CCDLOGOWHITE.svg';
 import Logo from '@/assets/images/user-svgrepo-com.svg';
 import Lock from '@/assets/images/lock-svgrepo-com.svg';
@@ -16,7 +16,7 @@ const WelcomeScreen = () => {
   const [value, setValue] = useState('');
   const [password, setPassword] = useState('');
   const [keyboardVisible, setKeyboardVisible] = useState(false);
-  
+
   const correctUsername = "User@gmail.com";
   const correctPassword = "12345";
 
@@ -38,27 +38,27 @@ const WelcomeScreen = () => {
     };
   }, []);
 
-  const handleLogin = () => {
-    if (value ===correctUsername  && password === correctPassword) {
-      router.push('/(tabs)');
-      Toast.show({
-        type: 'success',
-        text1: 'Inicio de sesión exitoso',
-        text2: 'Bienvenido de nuevo.',
-        visibilityTime: 4000,
-        position: 'top'
-      });
-    } else {
-     
-      Toast.show({
-        type: 'error',
-        text1: 'Error de autenticación',
-        text2: 'Credenciales incorrectas. Inténtalo de nuevo.',
-        visibilityTime: 4000,
-        position: 'top'
-      });
-    }
-  };
+  // const handleLogin = () => {
+  //   if (value === correctUsername && password === correctPassword) {
+  //     router.push('/(tabs)');
+  //     Toast.show({
+  //       type: 'success',
+  //       text1: 'Inicio de sesión exitoso',
+  //       text2: 'Bienvenido de nuevo.',
+  //       visibilityTime: 4000,
+  //       position: 'top'
+  //     });
+  //   } else {
+
+  //     Toast.show({
+  //       type: 'error',
+  //       text1: 'Error de autenticación',
+  //       text2: 'Credenciales incorrectas. Inténtalo de nuevo.',
+  //       visibilityTime: 4000,
+  //       position: 'top'
+  //     });
+  //   }
+  // };
 
   return (
     <>
@@ -87,35 +87,40 @@ const WelcomeScreen = () => {
                   <Text className="mb-2 text-3xl font-extrabold text-center">Bienvenido a CCD</Text>
                   <Text className="mb-10 text-sm font-semibold text-center text-gray-400">Tu espacio para aprender y crecer.</Text>
 
-                 
+
+                  <Link href="/login" asChild>
+                    <TouchableOpacity className="p-4 py-6 my-2 bg-black rounded-l-xl rounded-br-xl">
+                      <Text className="font-semibold text-center text-white">Iniciar Sesión</Text>
+                    </TouchableOpacity>
+                  </Link>
+                  <Link href="/register" asChild>
                   <TouchableOpacity
                     className="p-4 py-6 my-2 bg-black my m rounded-l-xl rounded-br-xl"
-                    onPress={handleLogin}
-                  >
-                    <Text className="font-semibold text-center text-white">Iniciar Sesión</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    className="p-4 py-6 my-2 bg-black my m rounded-l-xl rounded-br-xl"
-                    onPress={handleLogin}
+
                   >
                     <Text className="font-semibold text-center text-white">Registrarse</Text>
                   </TouchableOpacity>
+                  </Link>
+                  <Text className="mt-4 font-semibold text-center text-gray-400">- O inicia sesión con -</Text>
                   <View
-                    className="flex flex-row py-6 my-2 ju rounded-l-xl rounded-br-xl"
-                    
+                    className="flex flex-row justify-between py-6 my-2 rounded-l-xl rounded-br-xl"
+
                   >
-                 <View className="p-4 mr-3 bg-black m rounded-xl">
-                   <AntDesign name="google" size={24} color={Colors.white}  />
-                 </View>
-                 <View className="p-4 mr-3 bg-black m rounded-xl">
-                   <AntDesign name="google" size={24} color={Colors.white}  />
-                 </View>
-                 <View className="p-4 mr-3 bg-black m rounded-xl">
-                   <AntDesign name="google" size={24} color={Colors.white}  />
-                 </View>
+                    <TouchableOpacity className="p-4 mr-3 bg-black m rounded-xl">
+                      <AntDesign name="google" size={24} color={Colors.white} />
+                    </TouchableOpacity>
+                    <TouchableOpacity className="p-4 mr-3 bg-black m rounded-xl">
+                      <FontAwesome5 name="facebook" size={24} color={Colors.white} />
+                    </TouchableOpacity>
+                    <TouchableOpacity className="p-4 mr-3 bg-black m rounded-xl">
+                      <Entypo name="linkedin-with-circle" size={24} color={Colors.white} />
+                    </TouchableOpacity>
+                    <TouchableOpacity className="p-4 mr-3 bg-black m rounded-xl">
+                      <AntDesign name="apple-o" size={24} color={Colors.white} />
+                    </TouchableOpacity>
                   </View>
 
-
+                  
                   <View className="flex flex-row justify-center my-6">
                     <Text>¿No recuerdas tu contraseña? </Text>
                     <Link href='/login'>
